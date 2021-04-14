@@ -1,7 +1,7 @@
 class Animal {
-    constructor(name) {
+    constructor(fname) {
         this.speed = 0;
-        this.name = name;
+        this.fname = fname;
     }
     run(speed) {
         this.speed = speed;
@@ -9,7 +9,7 @@ class Animal {
     }
     stop() {
         this.speed = 0;
-        alert(`${this.name} stands still.`);
+        alert(`${this.fname} stands still.`);
     }
 }
 
@@ -17,7 +17,7 @@ let animal = new Animal('Gerald');
 
 class Giraffe extends Animal {
     hide() {
-        alert(`${this.name} hides!`);
+        alert(`${this.fname} hides!`);
     }
     stop() {
         // ..now this will be used for giraffe,stop()

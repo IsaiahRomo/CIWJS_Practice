@@ -36,8 +36,8 @@
     </ul>
     <form action="">
         <p>Please enter your info</p>
-        <label for="name">Full Name</label>
-            <input id='name' type="text">
+        <label for="fName">Full Name</label>
+            <input id='fName' type="text">
         <label for="height">Height</label>
             <input id='height' type="text">
         <label for="id">ID</label>
@@ -45,8 +45,49 @@
         <label for="favColor">Favorite Color</label>
             <input id='favColor' type="text">
     </form>
-    <button onclick="run()">done</button>
+    <button id="btn">done</button>
+    <br>
+    <br>
+    <br>
+    <script>
+        // create an array to store each student
+        let students = [];
+        // function that will run when our submit button is clicked
+        let run = (event) => {
+            // prevent default reload of page with form submission
+            // shown in case of check boxes
+            event.preventDefault();
+            // create variable to hold each value in form
+            let fName = document.getElementById('fName').value;
+            let height = document.getElementById('height').value;
+            let id = document.getElementById('id').value;
+            let favColor = document.getElementById('favColor').value;
+            // create an object to store data from form in
+            let student = {
+                firstLogin: Date.now(),
+                fName: fName,
+                height: height,
+                id: id,
+                favColor: favColor
+            }
+            // add created object to array of all students
+            students.push(student);
+            // reset form through accessing form from dom
+            document.forms[0].reset();
+            // log students array to console
+            console.log(students);
+            // save to local storage call JSON.Stringify
+            // to turn obj into a string
+            localStorage.setItem('studentList', JSON.stringify(students));
 
+        }
+            // Once all DOM Content offically loaded we will use event listener
+            // to call the run function defined on line 58
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('btn').addEventListener('click', run)
+            })
+
+    </script>
     <script src="objects.js"></script>
     <script src="calc.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
